@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block body %}
+  <section>
+    <h1>Featured Cars</h1>
+      <div class="row row-cols-1 row-cols-md-3 g-4 container-fluid">
+          {% for i in cars %}
+          {% include "main/featured-car-list.html" with carname=i.make model=i.model carslug=i.slug id=i.id pics=i.images.image_1.url yom=i.yom price=i.price location=i.location sold=i.is_sold reserved=i.is_reserved%}
+          {% endfor %}
+      </div>
+  </section>
+  {% endblock body %}
+

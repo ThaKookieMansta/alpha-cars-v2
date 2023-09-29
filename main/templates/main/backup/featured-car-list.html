@@ -1,0 +1,17 @@
+<div class="col" style="width: 25rem;">
+    <div class="card h-100" >
+        <a href="{% url 'carDetails' id carslug%}" ><img src="{{ pics }}" alt="{{carname}}" class="featured-img"></a>
+      <div class="card-body">
+        <h5 class="card-title">{{carname }} : {{ model }} {{yom}}</a></h5>
+        {% if sold %}
+        <p class="card-text sold-car"> SOLD! </p>
+        {% elif reserved %}
+        <p class="card-text reserved-car"> RESERVED! </p>
+        {% else %}
+        <p class="card-text"> {{price}} - {{location}} </p>
+        {% endif %}
+        
+        <a href="{% url 'carDetails' id carslug%}" class="btn btn-secondary">More Details</a>
+      </div>
+    </div>
+  </div>

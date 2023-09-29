@@ -1,0 +1,145 @@
+h1 {
+    color: rgb(255, 38, 0);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.featured-img {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px 15px;
+  }
+
+.product-img {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    /* border-radius: 50%; */
+    margin: 10px 15px;
+  }
+
+.images {
+    padding-top: 20px;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+
+    
+ }
+  
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+  
+a:hover {
+    color: gray;
+}
+  
+a:active {
+    text-decoration: underline;
+}
+
+.zoom {
+    /* padding: 50px; */
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+}
+  
+.zoom:hover {
+   transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+}
+
+.sold-car {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.reserved-car {
+  color: green;
+  font-size: 1.2rem;
+}
+
+.car-price {
+    color: red;
+}
+
+#sell-a-car {
+   padding:30rem 0;
+}
+
+#sell-a-car h1 {
+   
+}
+
+.btn-success {
+    border-radius: 50%;
+}
+header {
+    padding-bottom: 20px;
+}
+
+  @media screen and (max-width: 900px) {
+    table {
+      margin: 0 10px;
+    }
+
+    table th {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+     
+    table tr {
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+
+    .td-edit{
+        display: block;
+        font-size: .8em;
+        text-align: center;
+    }
+
+    .img-edit{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+
+    table td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+      }
+  
+ 
+  }  
+
+  

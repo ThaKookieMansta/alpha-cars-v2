@@ -1,0 +1,116 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} {{ car.make}} {{ car.model }} {% endblock title %}
+
+{% block body %}
+
+    {% if details %}
+    <h1 class="text-center">{{ car.make}} {{ car.model }}</h1>
+
+        <!--In line 14 of code, do not forget to have the MEDIA_URL passed before the urls shared from the views. This is crucial to render the image-->
+        <div class="images container-xxl ">
+        {% for p in pics %}
+            <img src="{{MEDIA_URL}}{{ p}}" class="product-img zoom slideshow-image img-edit" alt="{{ p.name }}"> 
+        {% endfor %}
+        </div>
+        <hr class="container-xxl">
+        <h1 class="text-center">{{ car.make}} {{ car.model }} - {{car.yom}}</h1>
+        {% if car.is_sold %}
+        <p class="text-center sold-car"> SOLD! </p>
+        {% elif car.is_reserved %}
+        <p class="text-center reserved-car"> RESERVED! </p>
+        {% else %}
+        <p class="text-center car-price" > {{car.price}} </p>
+        {% endif %}
+        
+
+        <table class="table table-striped-columns table-hover container-xxl">
+            <thead>
+              <tr>
+                <th colspan="5" scope="col">{{car.make}} {{car.model}} Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Chassis No</th>
+                <td data-label="Chassis No">{{car.chassis}}</td>
+                <th>Model Code</th>
+                <td data-label="Model Code"> {{ car.code }} </td>
+              </tr>
+              <tr>
+                <th>Transmission</th>
+                <td data-label="Transmission">{{car.transmission}}</td>
+                <th>Location</th>
+                <td data-label="Location"> {{ car.location }} </td>
+              </tr>
+              <tr>
+                <th>Drive</th>
+                <td data-label="Drive">{{car.drive}}</td>
+                <th>Year</th>
+                <td data-label="Year"> {{ car.yom }}/ {{car.month}} </td>
+              </tr>
+              <tr>
+                <th>Exterior Colour</th>
+                <td data-label="Exterior Color">{{car.ext_color}}</td>
+                <th>Interior Colour</th>
+                <td data-label="Interior Color"> {{ car.int_color }} </td>
+              </tr>
+              <tr>
+                <th>Engine Capacity</th>
+                <td data-label="Engine Capacity">{{car.eng_capacity}}</td>
+                <th>Fuel</th>
+                <td data-label="Fuel"> {{ car.fuel }} </td>
+              </tr>
+              <tr>
+                <th>No of Seats</th>
+                <td data-label="No of Seats">{{car.seats}}</td>
+                <th>No of Doors</th>
+                <td data-label="No of Doors"> {{ car.doors }} </td>
+              </tr>
+              <tr>
+                <th>Mileage</th>
+                <td data-label="Mileage">{{car.mileage}}</td>
+                <th>Body</th>
+                <td data-label="Body"> {{ car.body_type }} </td>
+              </tr>
+
+             
+            </tbody>
+        </table>
+          <br>
+          <br>
+          <hr class="container-xxl">
+
+        <table class="container-xxl">
+            <tr>
+                <td class="td-edit">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                        Features
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for f in car.features.all %}
+                                <li class="list-group-item"> {{f}}</li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </td>
+                <td class="td-edit">
+                    <p>Interested in this car?</p>
+                    <a href="https://wa.me/254713666572?text=Hello,%20I'm%20interested%20in%20the%20{{car.yom}}%20{{car.make}}%20{{car.model}}." class="btn" tabindex="-1" role="button" aria-disabled="true" target="_blank" rel="noopener noreferrer" style="border-radius: 20px; background-color: #25d366;"><i class="fa fa-whatsapp my-float"></i> Whatsapp Us</a>
+                    <br>
+                    <br>
+                    <p>Ask us about financing this {{car.make}}.</p>
+                </td>
+            </tr>
+        </table>
+        
+        <hr class="container-xxl">
+
+
+    {% else %}
+        Your car is unavailable
+    {% endif %}
+{% endblock body %}

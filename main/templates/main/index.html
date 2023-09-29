@@ -1,0 +1,107 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block body %}
+				<!-- Banner -->
+					<section id="banner" class="major">
+						<div class="inner">
+							<header class="major">
+								<h1>Welcome To Aplha Cars 254</h1>
+							</header>
+							<div class="content">
+								<p>Your number one car sales company</p>
+								<ul class="actions">
+									<li><a href="https://wa.me/254713666572" class="button next scrolly" target="_blank" >Contact us</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+							<!-- Featured Cars -->
+							<section class="tiles">
+								{% for i in cars %}
+								<article>
+									<span class="image">
+										<img src="{{ i.images.image_1.url }}" alt="" />
+									</span>
+
+									<header class="major">
+										<p>
+											<i class="fa fa-dashboard"></i> {{i.mileage}}km &nbsp;&nbsp;
+											<i class="fa fa-cube"></i> {{i.eng_capacity}}cc&nbsp;&nbsp;
+											<i class="fa fa-cog"></i> {{i.transmission}}
+										</p>
+
+										<h3>{{i.make}}, {{i.model}}</h3>
+
+										{% if i.is_sold %}
+										
+										<p> <strong> SOLD</strong></p>
+
+										{% elif i.is_reserved %}
+
+										<p> <strong> RESERVED </strong></p>
+
+										{% else %}
+
+										<p> <strong> {{i.price}}</strong></p>
+										
+																	
+										{% endif %}
+
+
+										<p>{{i.location}}  /  {{i.fuel}}  /  {{i.yom}}  /  {{i.doors}} doors</p>
+
+
+
+										<div class="major-actions">
+											<a href="{% url 'carDetails' i.id i.slug%}" class="button small next">View Car</a>
+										</div>
+									</header>
+								</article>
+								{% endfor %}
+
+							</section>
+
+							<!-- About us -->
+							<section>
+								<div class="inner">
+									<header class="major">
+										<h2>About us</h2>
+									</header>
+									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+									<ul class="actions">
+										<li><a href="{% url 'aboutUs' %}" class="button next">Read more</a></li>
+									</ul>
+								</div>
+							</section>
+
+
+							<!-- Testimonials -->
+							<section>
+								<div class="inner">
+									<header class="major">
+										<h2>Testimonials</h2>
+									</header>
+									<div class="row">
+										<div class="col-6">
+											<p><em>"Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt."</em></p>
+											<p><strong>- John Doe</strong></p>
+
+										</div>
+
+										<div class="col-6">
+											<p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores temporibus dolorum minus repudiandae, eaque error corporis aliquam, architecto amet itaque nobis. Omnis itaque est dolore, a nostrum numquam. Quae, facilis."</em></p>
+											<p><strong>- Jack Smith</strong></p>
+										</div>
+									</div>
+<!--									<ul class="actions">-->
+<!--										<li><a href="testimonials.html" class="button next">Read more</a></li>-->
+<!--									</ul>-->
+								</div>
+							</section>
+					</div>
+{% endblock body %}

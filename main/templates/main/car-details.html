@@ -1,0 +1,173 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} {{ car.make}} {{ car.model }} {% endblock title %}
+
+{% block body %}
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>{{ car.yom }} {{ car.make }} {{ car.model }}</h1>
+									</header>
+
+									<div class="row">
+										<div class="col-md-6">
+											<img src="{{MEDIA_URL}}{{pics.0}}" class="img-responsive" alt="">
+										</div>
+
+										<div class="col-md-6">
+											<div class="row">
+												{% for p in pics %}
+												<div class="col-md-4 col-xs-6"><img src="{{MEDIA_URL}}{{ p}}" class="img-responsive" alt="{{ p.name }}"></div>
+												{% endfor %}
+											</div>
+
+											<br>
+
+										{% if car.is_sold %}
+										
+										<h2> SOLD </h2>
+
+										{% elif car.is_reserved %}
+
+										<h2> RESERVED</h2>
+
+										{% else %}
+
+										<h2> {{ car.price }}</h2>
+										
+																	
+										{% endif %}
+
+											
+										</div>
+									</div>
+
+									<br>
+
+									<form action="#">
+										<div class="fields">
+											<div class="field quarter">
+							                    <label>Location</label>
+							                     
+							                    <input type="text" readonly value="{{car.location}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Make</label>
+							                     
+							                    <input type="text" readonly value="{{car.make}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Model</label>
+							                     
+							                    <input type="text" readonly value="{{car.model}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>First registration</label>
+							                     
+							                    <input type="text" readonly value="{{car.yom}}/{{car.month}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Mileage</label>
+							                     
+							                    <input type="text" readonly value="{{car.mileage}} km">
+							                </div>
+
+											<div class="field quarter">
+							                    <label>Fuel</label>
+							                     
+							                    <input type="text" readonly value="{{car.fuel}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Engine size</label>
+							                     
+							                    <input type="text" readonly value="{{car.eng_capacity}} cc">
+							                </div>
+
+											<div class="field quarter">
+							                    <label>Internal Color</label>
+							                     
+							                    <input type="text" readonly value="{{car.int_color}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Gearbox</label>
+							                     
+							                    <input type="text" readonly value="{{car.transmission}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Number of seats</label>
+							                     
+							                    <input type="text" readonly value="{{car.seats}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>Doors</label>
+							                     
+							                    <input type="text" readonly value="{{car.doors}}">
+							                </div>
+
+							                <div class="field quarter">
+							                    <label>External Color</label>
+							                     
+							                    <input type="text" readonly value="{{car.ext_color}}">
+							                </div>
+										</div>
+									</form>
+								</div>
+							</section>
+
+							<section id="contact">
+								<div class="inner">
+									<section>
+										<header class="major">
+											<h2>Vehicle Description</h2>
+										</header>
+										<p>
+										{% for feature in car.features.all %}
+
+										- {{feature}}<br>
+										{% endfor %}
+										</p>
+									</section>
+
+									<section class="split">
+										<section>
+											<div class="contact-method">
+												<span class="icon alt fa-user"></span>
+												<h3>Name</h3>
+												<span>Wallace M</span>
+											</div>
+										</section>
+
+										<section>
+											<div class="contact-method">
+												<span class="icon alt fa-phone"></span>
+												<h3>Phone</h3>
+												<span><a href="tel:+254713666572" style="text-decoration: none;">+254713666572</a></span>
+											</div>
+										</section>
+
+										<section>
+											<div class="contact-method">
+												<span class="icon alt fa-whatsapp"></span>
+												<h3>Send me a direct Message on WhatsApp</h3>
+												<a href="https://wa.me/254713666572?text=Hello,%20I'm%20interested%20in%20the%20{{car.yom}}%20{{car.make}}%20{{car.model}}." class="btn" tabindex="-1" role="button" aria-disabled="true" target="_blank" rel="noopener noreferrer" style="border-radius: 20px; background-color: #25d366;"><i class="fa fa-whatsapp my-float"></i> Whatsapp Us</a>
+											</div>
+										</section>
+									</section>
+								</div>
+							</section>
+					</div>
+
+{% endblock body %}

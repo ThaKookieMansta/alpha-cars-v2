@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{% block title %}Alpha Cars 254{% endblock title %}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'main/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+		<link rel="icon" type="image/x-icon" href=" {% static 'main/images/favicon.ico'%} ">
+		<noscript><link rel="stylesheet" href="{% static 'main/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header" class="alt">
+					<a href="/" class="logo"><strong>Alpha Cars</strong> <span>254</span></a>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+		                <li class="active"> <a href="/">Home </a> </li>
+
+		                <li> <a href="{% url 'allCars' %}">Cars</a> </li>
+
+		                <li> <a href="{% url 'aboutUs' %}">About Us</a> </li>
+
+		                <li class="dropdown">
+		                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"  role="button" aria-haspopup="true" aria-expanded="false">More</a>
+
+		                    <ul class="dropdown-menu">
+				                <li><a href="{% url 'faq' %}">FAQ</a></li>
+				                <li><a href="{% url 'terms' %}">Terms</a></li>
+		                    </ul>
+		                </li>
+            		</ul>
+				</nav>
+
+                <!--Body section-->
+
+                {% block body %}{% endblock body %}
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="https://web.facebook.com/alphaonemacha" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.instagram.com/alphacars254/" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="https://wa.me/254713666572" class="icon alt fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>Copyright © {{year}} Alpha Cars 254</li>
+						</ul>
+					</div>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'main/js/jquery.min.js' %}"></script>
+			<script src="{% static 'main/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+			<script src="{% static 'main/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'main/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'main/js/browser.min.js' %}"></script>
+			<script src="{% static 'main/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'main/js/util.js' %}"></script>
+			<script src="{% static 'main/js/main.js' %}"></script>
+
+	</body>
+</html>

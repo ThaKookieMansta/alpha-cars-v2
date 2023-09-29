@@ -1,0 +1,80 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Car Catalogue{% endblock title %}
+{% block body %}
+<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Cars</h1>
+									</header>
+								</div>
+							</section>
+
+							<section>
+								<div class="inner">
+									<form method="get">
+										<div class="fields">
+
+											{{car_filter.form}}
+											
+						                    <div class="field half text-right">
+												<ul class="actions">
+													<li><input type="submit" value="Search" class="primary"></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
+							</section>
+
+							<!-- Featured Cars -->
+							<section class="tiles">
+								{% for i in cars %}
+								<article>
+									<span class="image">
+										<img src="{{ i.images.image_1.url }}" alt="" />
+									</span>
+
+									<header class="major">
+										<p>
+											<i class="fa fa-dashboard"></i> {{i.mileage}}km &nbsp;&nbsp;
+											<i class="fa fa-cube"></i> {{i.eng_capacity}}cc&nbsp;&nbsp;
+											<i class="fa fa-cog"></i> {{i.transmission}}
+										</p>
+
+										<h3>{{i.make}}, {{i.model}}</h3>
+
+										{% if i.is_sold %}
+										
+										<p> <strong> SOLD</strong></p>
+
+										{% elif i.is_reserved %}
+
+										<p> <strong> RESERVED </strong></p>
+
+										{% else %}
+
+										<p> <strong> {{i.price}}</strong></p>
+										
+																	
+										{% endif %}
+
+										<p>{{i.location}}  /  {{i.fuel}}  /  {{i.yom}}  /  {{i.doors}} doors</p>
+
+
+
+										<div class="major-actions">
+											<a href="{% url 'carDetails' i.id i.slug%}" class="button small next">View Car</a>
+										</div>
+									</header>
+								</article>
+								{% endfor %}
+
+							</section>
+
+					</div>
+{% endblock body %}

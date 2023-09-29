@@ -1,0 +1,1 @@
+web gunicorn alphaCars254.wsgi:application --log-file -
