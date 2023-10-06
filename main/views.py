@@ -1,3 +1,6 @@
+"""
+This file contains the various views that are used in this project
+"""
 import datetime
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -9,6 +12,15 @@ from .filters import CarFilter
 # Create your views here.
 
 def index(request):
+    """
+    This view handles the data passed in the
+    homepage of the web app
+    Args:
+        request:
+
+    Returns:
+
+    """
     cars = Car.objects.all().order_by('-id')
     today = datetime.date.today()
     year = today.year
@@ -19,13 +31,25 @@ def index(request):
 
 
 def carView(request, id, carSlug):
+    """
+    This view handles the data passed in the page
+    of a selected car in the web app
+    Args:
+        request:
+        id: The id of the car from the Database
+        carSlug: Thhis forms the link to the page.
+
+    Returns:
+
+    """
     today = datetime.date.today()
     year = today.year
     # image_urls = Image._meta.fields
 
     try:
         cars = Car.objects.get(id=id)
-        # This section is where we get the urls for the images stored in the Image model and pass them as a list to the template.
+        # This section is where we get the urls for the images stored in the
+        # Image model and pass them as a list to the template.
         image_urls = []
         for field in cars.images._meta.fields:  # This is accessing the images field in the Car model.
             if field.name.startswith('image_'):
@@ -46,12 +70,16 @@ def carView(request, id, carSlug):
             "year": year,
         })
 
-
-def sell_a_carView(request):
-    return render(request, 'main/sell-a-car.html')
-
-
 def all_cars(request):
+    """
+    This view displays all the cars that are in the database to the
+    cars page.
+    Args:
+        request:
+
+    Returns:
+
+    """
     cars = Car.objects.all().order_by('-id')
     today = datetime.date.today()
     year = today.year
@@ -64,6 +92,14 @@ def all_cars(request):
     })
 
 def about_us(request):
+    """
+    This view displays the about us details
+    Args:
+        request:
+
+    Returns:
+
+    """
     today = datetime.date.today()
     year = today.year
     return render(request, 'main/about-us.html', {
@@ -71,6 +107,14 @@ def about_us(request):
     })
 
 def terms(request):
+    """
+    This view parses the html page for terms and conditions
+    Args:
+        request:
+
+    Returns:
+
+    """
     today = datetime.date.today()
     year = today.year
     return render(request, 'main/terms.html', {
@@ -78,6 +122,14 @@ def terms(request):
     })
 
 def faq(request):
+    """
+    This view parses the html page for frequently asked questions
+    Args:
+        request:
+
+    Returns:
+
+    """
     today = datetime.date.today()
     year = today.year
     return render(request, 'main/faq.html', {

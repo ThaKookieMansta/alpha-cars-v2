@@ -1,3 +1,6 @@
+"""
+This file has the various models used in this project
+"""
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -7,6 +10,11 @@ from django.utils.text import slugify
 
 
 class CarBodyType(models.Model):
+    """
+    This model defines the car body type.
+    This ranges from Hatchback to Lorry depending on the
+    administrator's preference
+    """
     bodyType = models.CharField(max_length=30)
 
     def __str__(self):
@@ -14,6 +22,12 @@ class CarBodyType(models.Model):
 
 
 class TransmissionType(models.Model):
+    """
+    This model consists of the Transmission type.
+    Either Automatic or Manual. The administrator
+    can get technical with it and add values such as
+    CVT, DSG, and many more
+    """
     transmission = models.CharField(max_length=20)
 
     def __str__(self):
@@ -21,6 +35,11 @@ class TransmissionType(models.Model):
 
 
 class FuelType(models.Model):
+    """
+    This defines the type of fuel the car will take.
+    Also determined by the Administrator, options such as
+    Petrol and Diesel are what is expected here
+    """
     fuelType = models.CharField(max_length=20)
 
     def __str__(self):
@@ -28,6 +47,11 @@ class FuelType(models.Model):
 
 
 class CarDrive(models.Model):
+    """
+    This model defines how many wheels the car's
+    power is sent to. this could be 2 wheel drive
+    or even 4 wheel drive
+    """
     driveType = models.CharField(max_length=250)
 
     def __str__(self):
@@ -35,6 +59,9 @@ class CarDrive(models.Model):
 
 
 class SeatNo(models.Model):
+    """
+    This defines the number of seats the car has.
+    """
     seats = models.CharField(max_length=10)
 
     def __str__(self):
@@ -42,6 +69,9 @@ class SeatNo(models.Model):
 
 
 class Door(models.Model):
+    """
+    This defines the number of doors the car has
+    """
     doors = models.CharField(max_length=10)
 
     def __str__(self):
@@ -49,6 +79,10 @@ class Door(models.Model):
 
 
 class Feature(models.Model):
+    """
+    This defines the various additional features the
+    car may have such as Cruise control and the likes
+    """
     featureName = models.CharField(max_length=250)
 
     def __str__(self):
@@ -56,6 +90,9 @@ class Feature(models.Model):
 
 
 class Image(models.Model):
+    """
+    This model holds the images used for the cars
+    """
     image_1 = models.ImageField(upload_to='images', blank=True)
     image_2 = models.ImageField(upload_to='images', blank=True)
     image_3 = models.ImageField(upload_to='images', blank=True)
@@ -79,6 +116,10 @@ class Image(models.Model):
 
 
 class Car(models.Model):
+    """
+    This model defines the car as a whole implementing various relations with the other
+    models
+    """
     id = models.AutoField(primary_key=True, editable=False)
     images = models.OneToOneField(Image, on_delete=models.CASCADE)
     slug = models.SlugField(default="", blank=True, null=False, db_index=True)
