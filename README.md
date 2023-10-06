@@ -1,4 +1,4 @@
-# Alpha Cars Web Application.
+# Alpha Cars Web Application
 
 ## By Chris Mukirae
 
@@ -22,11 +22,10 @@
 Alpha cars 254 is a car company in Kenya that deals in the sale of clean and well maintained used cars in Kenya. This 
 web app is for the company and will give Alpha Cars the online presence that will elevate the status of the company.
 
-## Setup/ Installation Requirements
-
 ## Known Bugs
 
+If a car has a lot of images, this may result in a lot of whitespace on the page. This shall be fixed in a future update
 
 ## License
 
-This application is licensed 
+This application is licensed to use for the purpose of demonstrations only by the author
